@@ -8,12 +8,7 @@ before_install:
 install:
 - sudo apt-get update -qq
 - sudo apt-get install -qq -y xsltproc
-script: cd $BUILD_DIR/gun-wrapper && make test
-after_script:
-- rm -rf $BUILD_DIR/gun-wrapper
-before_deploy:
-- cd $BUILD_DIR/gun-wrapper
-- VERSION=$RMQ_VERSION make
+script: VERSION=$RMQ_VERSION make test
 cache:
   apt: true
   directories:
@@ -22,7 +17,7 @@ deploy:
   provider: releases
   api_key:
     secure: ZFDjg8FW2tEkIAr87uA9vfB+WZMq30GKwL+ACaajow2mqeCvW5ZGfFzaxuMBCQILE0uNLxM9lLmtw+IYQF/Z7qIGhyJHiEsG24yeHcQJhfbjzizjKr8lYW14zi9XOlX6nmOHyTvhmfqjPZN2eOBF5dPW28kUW3YzCZg2Gi+hMmE=
-  file: $BUILD_DIR/gun-wrapper/dist/gun-${GUN_VERSION}-rmq${RMQ_VERSION}-git${GUN_COMMIT}.ez
+  file: $TRAVIS_BUILD_DIR/dist/gun-${GUN_VERSION}-rmq${RMQ_VERSION}-git${GUN_COMMIT}.ez
   on:
     tags: true
     repo: gmr/gun-wrapper
