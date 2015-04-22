@@ -1,10 +1,11 @@
 APP_NAME:=gun
 
+DEPS:=cowlib-wrapper ranch-wrapper
+
 UPSTREAM_GIT:=https://github.com/ninenines/gun.git
 UPSTREAM_REVISION:=a752035
 RETAIN_ORIGINAL_VERSION:=true
-
-STANDALONE_TEST_COMMANDS:=eunit:test([faux_test],[verbose])
+RELEASABLE:=true
 
 ORIGINAL_APP_FILE:=$(CLONE_DIR)/src/$(APP_NAME).app.src
 DO_NOT_GENERATE_APP_FILE=true
