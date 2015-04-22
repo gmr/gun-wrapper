@@ -13,7 +13,7 @@ after_script:
 - rm -rf $BUILD_DIR/gun-wrapper
 before_deploy:
 - cd $BUILD_DIR/gun-wrapper
-- VERSION=$BUILD_VERSION make
+- VERSION=$RMQ_VERSION make
 cache:
   apt: true
   directories:
